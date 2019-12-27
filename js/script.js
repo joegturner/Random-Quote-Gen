@@ -60,6 +60,7 @@ function print(message) {
   outputDiv.innerHTML = message;
 }
 
+tewts;
 /*'getRandomQuote` function
 **Generates a random number
 **Returns a Object from the 'quote' array
