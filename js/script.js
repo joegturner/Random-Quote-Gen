@@ -61,6 +61,7 @@ function print(message) {
 }
 
 tewts;
+test1;
 /*'getRandomQuote` function
 **Generates a random number
 **Returns a Object from the 'quote' array
