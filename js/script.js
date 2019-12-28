@@ -3,11 +3,9 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
+// by joegturner - 12/28/2019
 
-//'quotes` array 
+// 'quotes` array 
 var quote = [
   {
     quote: 'Hakuna matata', 
@@ -48,28 +46,34 @@ var quote = [
     year: 2000,
     category: 'motivational',
     rating: 9.4
+  },
+  { 
+    quote: 'Yeah, well - the Dude abides.',
+    source: 'The Dude', 
+    citation: 'The Big Lebowski',
+    year: 1998,
+    category: 'humor',
+    rating: 9.1
   }
 ];
-var lastRandom = 0;
-var delay = 5000;
-var interval;
+var lastRandom = 0; //previous randomly generated number
+var delay = 20000; //quote refresh delay
+var interval; //setInterval() timer
 
-//'print' function
+// 'print' function
 function print(message) {
   var outputDiv = document.getElementById('quote-box');
   outputDiv.innerHTML = message;
 }
 
-tewts;
-test1;
-/*'getRandomQuote` function
-**Generates a random number
-**Returns a Object from the 'quote' array
+/* 'getRandomQuote` function
+** Generates a random number
+** Returns a Object from the 'quote' array
+** New 'random' is compared against 'lastRandom' in order to avoid quote repeats
 */
 function getRandomQuote(){
   var random = Math.floor(Math.random()*quote.length);
   var quoteObj = {};
-  console.log(random);
   do{
     random = Math.floor(Math.random()*quote.length);
    } while (random === lastRandom)
@@ -78,36 +82,60 @@ function getRandomQuote(){
   return quoteObj;
 };
 
-/*'printQuote` function
-**Concatenates random quote and prints by calling 'print' function
+/* 'printQuote` function
+** Concatenates random quote and prints by calling 'print' function
 */
 function printQuote(){
   var message='';
   var quoteObj = getRandomQuote();
-  var hasCitation = false;
-  var hasYear = false;
 
-  if (quoteObj.citation){
-    hasCitation = true;
-  }
-  if (quoteObj.year){
-    hasYear = true;
-  }
-
+  //build HTML for 'quote', 'source', 'citation', and 'year'
   message += '<p class="quote">' + quoteObj.quote + '</p>';
   message += '<p class="source">' + quoteObj.source;
-  if(hasCitation === true){
+  if(quoteObj.citation){
     message += '<span class="citation">' + quoteObj.citation + '</span>';
   }
-  if(hasYear === true){
+  if(quoteObj.year){
     message += '<span class="year">' + quoteObj.year + '</span>';
   }
   message += '</p>';
-  autoRefreshQuote();
-  print(message);
+
+  // build HTML for 'category' and 'rating' properties
+  if(quoteObj.category || quoteObj.rating){
+    message += '<p class="source">';
+    if(quoteObj.category){
+      message += 'Category: "' + quoteObj.category + '"';
+    }
+    if(quoteObj.rating){
+      message += ' / User Rating: ' + quoteObj.rating;
+    }
+    message += '</p>';
+  }
+
+  setBackgroundColor(randomColor()); //change background color
+  autoRefreshQuote(); //start page refresh timer
+  print(message); //print random quote
 };
 
-/*'autoRefreshQuote' function
+/* 'setBackgroundColor' function
+** Changes background color based on hexadecimal
+*/
+function setBackgroundColor(hexColor){
+  document.body.style.backgroundColor = '#' + hexColor;
+}
+
+/* 'randomColor' function
+** Random hexadecimal is padded with 0's
+** Returns a random hexadecimal from #000000 to #FFFFFF
+*/
+function randomColor(){
+  var hexColor = '';
+  //Found the below code for generating a random color in hex. Posted by Nicolas Buduroi on https://stackoverflow.com/questions/1484506/random-color-generator
+  hexColor = (Math.random().toString(16) + '000000').substring(2, 8);
+  return hexColor;
+}
+
+/*  'autoRefreshQuote' function
 **Reloads a new random quote based on 'delay' variable.
 */
 function autoRefreshQuote(){
@@ -117,5 +145,3 @@ function autoRefreshQuote(){
 
 //click event listener for the print quote button
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
-
-//autoRefreshQuote();
