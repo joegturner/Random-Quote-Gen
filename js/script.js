@@ -5,7 +5,7 @@ project 1 - A Random Quote Generator
 
 // by joegturner - 12/28/2019
 
-// 'quotes` array 
+// 'quote` array 
 var quote = [
   {
     quote: 'Hakuna matata', 
@@ -68,7 +68,7 @@ function print(message) {
 
 /* 'getRandomQuote` function
 ** Generates a random number
-** Returns a Object from the 'quote' array
+** Returns an Object from the 'quote' array
 ** New 'random' is compared against 'lastRandom' in order to avoid quote repeats
 */
 function getRandomQuote(){
@@ -89,7 +89,7 @@ function printQuote(){
   var message='';
   var quoteObj = getRandomQuote();
 
-  //build HTML for 'quote', 'source', 'citation', and 'year'
+  // builds HTML for 'quote', 'source', 'citation', and 'year'
   message += '<p class="quote">' + quoteObj.quote + '</p>';
   message += '<p class="source">' + quoteObj.source;
   if(quoteObj.citation){
@@ -100,7 +100,7 @@ function printQuote(){
   }
   message += '</p>';
 
-  // build HTML for 'category' and 'rating' properties
+  // builds HTML for 'category' and 'rating' properties
   if(quoteObj.category || quoteObj.rating){
     message += '<p class="source">';
     if(quoteObj.category){
@@ -135,7 +135,7 @@ function randomColor(){
   return hexColor;
 }
 
-/*  'autoRefreshQuote' function
+/* 'autoRefreshQuote' function
 **Reloads a new random quote based on 'delay' variable.
 */
 function autoRefreshQuote(){
