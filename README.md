@@ -2,8 +2,8 @@
  Generate a random quote
 
 # Getting Started
-To get running locally:
-    - Clone this repository
+To get running locally: <br>
+    - Clone this repository <br>
     - Open index.html with any web browser
 
 # Authors
