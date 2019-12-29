@@ -4,9 +4,11 @@ project 1 - A Random Quote Generator
 ******************************************/
 
 // by joegturner - 12/28/2019
+//First submission failed, resubmitting
+//Fixed 'quote' array to 'quotes'
 
-// 'quote` array 
-var quote = [
+// 'quotes` array 
+var quotes = [
   {
     quote: 'Hakuna matata', 
     source: 'Simon', 
@@ -72,12 +74,12 @@ function print(message) {
 ** New 'random' is compared against 'lastRandom' in order to avoid quote repeats
 */
 function getRandomQuote(){
-  var random = Math.floor(Math.random()*quote.length);
+  var random = Math.floor(Math.random()*quotes.length);
   var quoteObj = {};
   do{
-    random = Math.floor(Math.random()*quote.length);
+    random = Math.floor(Math.random()*quotes.length);
    } while (random === lastRandom)
-  quoteObj = quote[random];
+  quoteObj = quotes[random];
   lastRandom = random;
   return quoteObj;
 };
