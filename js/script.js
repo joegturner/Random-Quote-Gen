@@ -59,7 +59,7 @@ var quotes = [
   }
 ];
 var lastRandom = 0; //previous randomly generated number
-var delay = 2000; //quote refresh delay
+var delay = 20000; //quote refresh delay
 var interval; //setInterval() timer
 
 // 'print' function
