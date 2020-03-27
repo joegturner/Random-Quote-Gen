@@ -59,7 +59,7 @@ var quotes = [
   }
 ];
 var lastRandom = 0; //previous randomly generated number
-var delay = 20000; //quote refresh delay
+var delay = 2000; //quote refresh delay
 var interval; //setInterval() timer
 
 // 'print' function
@@ -144,6 +144,8 @@ function autoRefreshQuote(){
   clearInterval(interval);
   interval = window.setInterval(printQuote, delay);
 }
+
+autoRefreshQuote();
 
 //click event listener for the print quote button
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
