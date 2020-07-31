@@ -18,4 +18,3 @@
 ## Skills, Techniques, Process
 
 - Skills: Javascript, Fetch API
-  \
